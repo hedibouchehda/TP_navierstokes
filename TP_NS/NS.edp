@@ -25,10 +25,10 @@ Vh u=0, v=0;
 Vh p=0;
 Vh q=0;
 
-// Definition of Matrix dtMx and dtMy
+
 matrix dtM1x, dtM1y;
 
-// Macro
+
 macro BuildMat()
 {   /* for memory managenemt */
     varf vM(unused, v) = int2d(Th)(v);
@@ -49,12 +49,12 @@ macro BuildMat()
 BuildMat
 
 //while (diff>1e-12)
-for(int n = 0; n < 300; n++){
+for(int n = 0; n < 1000; n++){
     // Update
     Vh uold=u, vold=v, pold=p;
 
     // Solve
-    solve pb4u (u, w, /*init=n,*/ solver=UMFPACK, eps=epsu)
+    solve pb4u (u, w, solver=UMFPACK, eps=epsu)
         = int2d(Th)(
               u*w/dt
             + nu*(dx(u)*dx(w) + dy(u)*dy(w))
